@@ -1,18 +1,33 @@
+using Microsoft.Extensions.Logging;
 using myapp.domain.models;
+using myapp.domain.repositories;
 using myapp.domain.services;
 
 namespace myapp.business.services;
 
-public class PersonService: IPersonService
+public class PersonService(
+    ILogger<PersonService> log, 
+    IPersonRepository repository) : IPersonService
 {
-    public void save(Person person)
+    public async Task Save(Person person)
     {
-        
+        await repository.Save(person);
+        log.LogInformation("tryed to save person {}", person);
     }
 
-    public Person get(String name)
+    public async Task Delete(Person person)
     {
-        return null;
+        throw new NotImplementedException();
+    }
+
+    public async Task<Person?> Get(string cpf)
+    {
+        return await repository.Get(cpf);
+    }
+
+    public async Task <List<Person>> Filter(string name)
+    {
+        throw new NotImplementedException();
     }
 }
 

@@ -1,14 +1,17 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using myapp.business.services;
 using myapp.domain.services;
+using myapp.infra.repository.memory;
 
 namespace myapp.infra.bootstrap;
 
-public class BootStrapper
+public static class BootStrapper
 {
-    public void ConfigureServices(IServiceCollection services)
+    public static void ConfigureServices(this IServiceCollection services)
     {
-        services.AddScoped<IPersonService, PersonService>();  
+        services.AddTransient<IPersonService,PersonService>();
+        services.AddPersonRepository();
     }
 
 }

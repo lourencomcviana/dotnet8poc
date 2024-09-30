@@ -11,7 +11,7 @@
 - Domain (interfaces, entidades)
 
 
-[![](https://mermaid.ink/img/pako:eNp1kM1qwzAQhF9F7EmF5AVcKNhxC4Xm0h6rHDbW2hatVkI_hxDy7pFRDCklt_1GM4N2zzA4TdDAFNDP4uNTsRAxHyv2zqLhRRKil5Wenhcm1or_eLscDVOM1d3JlR_533kMGFPIQ8qBamonO-dSEdHXmBCvco_eG55W4U3uybpwWvhRc6Iw4nArbWXrzZpuv9Gbg9huX8Tun9Ld9cEGLIWysC7HOS8PCtJMlhQ0ZdQYfhQovhQf5uS-TjxAU7ahDQSXpxmaEX9joew1JuoNls_Zm3q5Aqf_ecQ?type=png)](https://mermaid.live/edit#pako:eNp1kM1qwzAQhF9F7EmF5AVcKNhxC4Xm0h6rHDbW2hatVkI_hxDy7pFRDCklt_1GM4N2zzA4TdDAFNDP4uNTsRAxHyv2zqLhRRKil5Wenhcm1or_eLscDVOM1d3JlR_533kMGFPIQ8qBamonO-dSEdHXmBCvco_eG55W4U3uybpwWvhRc6Iw4nArbWXrzZpuv9Gbg9huX8Tun9Ld9cEGLIWysC7HOS8PCtJMlhQ0ZdQYfhQovhQf5uS-TjxAU7ahDQSXpxmaEX9joew1JuoNls_Zm3q5Aqf_ecQ)
+c[![](https://mermaid.ink/img/pako:eNp1kM1qwzAQhF9F7EmF5AVcKNhxC4Xm0h6rHDbW2hatVkI_hxDy7pFRDCklt_1GM4N2zzA4TdDAFNDP4uNTsRAxHyv2zqLhRRKil5Wenhcm1or_eLscDVOM1d3JlR_533kMGFPIQ8qBamonO-dSEdHXmBCvco_eG55W4U3uybpwWvhRc6Iw4nArbWXrzZpuv9Gbg9huX8Tun9Ld9cEGLIWysC7HOS8PCtJMlhQ0ZdQYfhQovhQf5uS-TjxAU7ahDQSXpxmaEX9joew1JuoNls_Zm3q5Aqf_ecQ?type=png)](https://mermaid.live/edit#pako:eNp1kM1qwzAQhF9F7EmF5AVcKNhxC4Xm0h6rHDbW2hatVkI_hxDy7pFRDCklt_1GM4N2zzA4TdDAFNDP4uNTsRAxHyv2zqLhRRKil5Wenhcm1or_eLscDVOM1d3JlR_533kMGFPIQ8qBamonO-dSEdHXmBCvco_eG55W4U3uybpwWvhRc6Iw4nArbWXrzZpuv9Gbg9huX8Tun9Ld9cEGLIWysC7HOS8PCtJMlhQ0ZdQYfhQovhQf5uS-TjxAU7ahDQSXpxmaEX9joew1JuoNls_Zm3q5Aqf_ecQ)
 ``` mermaid
 flowchart TD
     Domain <--> Business
@@ -54,7 +54,6 @@ qv-ivr-antecipacao-api 🌳
 |    \ -- antecipacao.domain 📂
 | -- infra 🏗️
 |    | -- antecipacao.infra.bootstrap 🚀
-|    | -- antecipacao.infra.mapping 🗺️
 |    | -- proxy 🌉
 |    |    | -- antecipacao.infra.proxy.cxone 🌐
 |    |    \ -- antecipacao.infra.proxy.zenit 🌟
@@ -151,9 +150,12 @@ dotnet add interface/myapp.interface.api/myapp.interface.api.csproj reference in
 
 ### Dependency
 ``` bash
-
 dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj package Microsoft.Extensions.DependencyInjection
-dotnet add infra/myapp.infra.mapping/myapp.infra.mapping.csproj package AutoMapper --version 13.0.1
 
+dotnet add interface/myapp.interface.api/myapp.interface.api.csproj package AutoMapper --version 13.0.1
 
+dotnet add infra/repository/myapp.infra.repository.memory/myapp.infra.repository.memory.csproj package AutoMapper --version 13.0.1
+dotnet add infra/repository/myapp.infra.repository.memory/myapp.infra.repository.memory.csproj package Microsoft.EntityFrameworkCore.InMemory
+
+dotnet add business/myapp.business/myapp.business.csproj package Microsoft.Extensions.Logging.Abstractions --version 8.0.1
 ```

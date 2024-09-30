@@ -1,8 +1,8 @@
 using myapp.domain.models;
 
-namespace myapp.domain.services;
+namespace myapp.domain.repositories;
 
-public interface IPersonService
+public interface IPersonRepository
 {
     public Task Save(Person person);
     
@@ -11,7 +11,5 @@ public interface IPersonService
     public Task<Person?> Get(string cpf);
     
     public Task<List<Person>> Filter(string name);
-    
-    
-    
+
 }

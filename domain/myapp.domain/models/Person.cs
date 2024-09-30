@@ -8,6 +8,7 @@ public record Person(
     [Required][RegularExpression(@"^\d{3}\.\d{3}\.\d{3}-\d{2}$")]string Cpf,
     [Required]int Age
 ) {
+    
     public string FullName => GetFullName();
     private string GetFullName() => $"{Name} {Surname}";
 }
