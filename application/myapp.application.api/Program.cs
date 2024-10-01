@@ -38,7 +38,6 @@ app.UseHttpsRedirection();
 
 # region API
 
-
 app.MapPost("persons", async (PersonBody person,
         [FromServices] IMapper mapper, 
         [FromServices] IPersonService personService
@@ -47,6 +46,7 @@ app.MapPost("persons", async (PersonBody person,
     return;
 })
 .WithName("PostPerson")
+.WithTags("Persons")
 .WithOpenApi();
 
 
@@ -60,10 +60,15 @@ app.MapGet("persons/{cpf}", async (string cpf, [FromServices] IMapper mapper, [F
 
     var response = mapper.Map<PersonResponse>(person);
     return Results.Ok(response);
-});
+})
+.WithName("GetPerson")
+.WithTags("Persons")
+.WithOpenApi();
+
 # endregion
 
 # region DEMO
+
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
