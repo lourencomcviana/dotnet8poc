@@ -1,5 +1,5 @@
 using AutoMapper;
-using myapp.infra.repository.memory.entity;
+using myapp.infra.repository.memory.entities;
 using Person = myapp.domain.models.Person;
 
 namespace myapp.infra.repository.memory.mappings;

@@ -2,19 +2,16 @@ using AutoMapper;
 using myapp.@interface.api.resources;
 using Person = myapp.domain.models.Person;
 
-
 namespace myapp.@interface.api.mappings;
 
 public class PersonMapper
 {
-    
     public class PersonProfile : Profile
     {
         public PersonProfile()
         {
             CreateMap<PersonBody, Person>()
                 .ConstructUsing(src => NewPerson(src));
-
             
             CreateMap<Person, PersonResponse>()
                 .ConstructUsing(src => NewPersonResponse(src));

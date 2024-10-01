@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace myapp.infra.repository.memory.entity;
+namespace myapp.infra.repository.memory.entities;
 
 public class PersonEntity
 {

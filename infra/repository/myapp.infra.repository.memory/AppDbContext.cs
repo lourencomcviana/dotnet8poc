@@ -1,4 +1,4 @@
-using myapp.infra.repository.memory.entity;
+using myapp.infra.repository.memory.entities;
 
 namespace myapp.infra.repository.memory;
 

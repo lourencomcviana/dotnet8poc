@@ -2,7 +2,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using myapp.domain.models;
 using myapp.domain.repositories;
-using myapp.infra.repository.memory.entity;
+using myapp.infra.repository.memory.entities;
 
 namespace myapp.infra.repository.memory.repositories;
 
@@ -28,6 +28,7 @@ public class PersonRepository(AppDbContext context,IMapper mapper) : IPersonRepo
         return personEntity != null  ? mapper.Map<Person>(personEntity) : null;
     }
 
+    //TODO: trocar para IEnumerable
     public async Task<List<Person>> Filter(string name)
     {
        return await context.Persons

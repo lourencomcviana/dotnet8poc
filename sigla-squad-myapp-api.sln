@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{61ABB889
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myapp.infra.bootstrap", "infra\myapp.infra.bootstrap\myapp.infra.bootstrap.csproj", "{CE935589-7882-42CA-878B-C18B9913E9C4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "interface", "interface", "{74B0CDBE-083B-4B91-8C80-59544D669201}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application", "{74B0CDBE-083B-4B91-8C80-59544D669201}"
 	ProjectSection(SolutionItems) = preProject
-		interface\README.md = interface\README.md
+		application\README.md = application\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{67072BE3-9F55-469B-AD0B-F7A2C305225F}"
@@ -28,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repository", "repository", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myapp.infra.repository.memory", "infra\repository\myapp.infra.repository.memory\myapp.infra.repository.memory.csproj", "{92E3AD86-4054-499D-B14A-DEDFF7C4DA61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myapp.interface.api", "interface\myapp.interface.api\myapp.interface.api.csproj", "{3EB9272E-20CF-4A89-B600-5DF2517099AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myapp.application.api", "application\myapp.application.api\myapp.application.api.csproj", "{3EB9272E-20CF-4A89-B600-5DF2517099AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

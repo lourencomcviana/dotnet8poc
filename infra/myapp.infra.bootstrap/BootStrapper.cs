@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using myapp.business;
 using myapp.business.services;
 using myapp.domain.services;
 using myapp.infra.repository.memory;
@@ -10,7 +11,7 @@ public static class BootStrapper
 {
     public static void ConfigureServices(this IServiceCollection services)
     {
-        services.AddTransient<IPersonService,PersonService>();
+        services.AddBusiness();
         services.AddPersonRepository();
     }
 
