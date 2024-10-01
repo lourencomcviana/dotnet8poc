@@ -28,8 +28,7 @@ public class PersonRepository(AppDbContext context,IMapper mapper) : IPersonRepo
         return personEntity != null  ? mapper.Map<Person>(personEntity) : null;
     }
 
-    //TODO: trocar para IEnumerable
-    public async Task<List<Person>> Filter(string name)
+    public async Task<IEnumerable<Person>> Filter(string name)
     {
        return await context.Persons
             .Where(item => item != null && item.Name.ToLower().Contains(name.ToLower()))

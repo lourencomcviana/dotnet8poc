@@ -10,7 +10,7 @@ public interface IPersonService
 
     public Task<Person?> Get(string cpf);
     
-    public Task<List<Person>> Filter(string name);
+    public Task<IEnumerable<Person>> Filter(string name);
     
     
     

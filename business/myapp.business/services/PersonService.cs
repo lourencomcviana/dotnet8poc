@@ -25,7 +25,7 @@ public class PersonService(
         return await repository.Get(cpf);
     }
 
-    public async Task <List<Person>> Filter(string name)
+    public async Task <IEnumerable<Person>> Filter(string name)
     {
         throw new NotImplementedException();
     }
