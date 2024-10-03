@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myapp.infra.repository.memo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myapp.application.api", "application\myapp.application.api\myapp.application.api.csproj", "{3EB9272E-20CF-4A89-B600-5DF2517099AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myapp.infra.repository.weatherforecast", "infra\repository\myapp.infra.repository.weatherforecast\myapp.infra.repository.weatherforecast.csproj", "{818C2A84-CCFD-4C67-AE11-14A87A0C83B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{3EB9272E-20CF-4A89-B600-5DF2517099AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EB9272E-20CF-4A89-B600-5DF2517099AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EB9272E-20CF-4A89-B600-5DF2517099AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{818C2A84-CCFD-4C67-AE11-14A87A0C83B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{818C2A84-CCFD-4C67-AE11-14A87A0C83B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{818C2A84-CCFD-4C67-AE11-14A87A0C83B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{818C2A84-CCFD-4C67-AE11-14A87A0C83B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D4BB216F-34FA-4FE3-91FE-FD9B6594AF49} = {61174485-3DAC-4664-B6A4-CE6D99824EAA}
@@ -72,5 +78,6 @@ Global
 		{0518DE2D-A61B-4F05-A588-FAF0B62A26E7} = {61ABB889-B652-477C-AC51-CC8B8D21D988}
 		{92E3AD86-4054-499D-B14A-DEDFF7C4DA61} = {0518DE2D-A61B-4F05-A588-FAF0B62A26E7}
 		{3EB9272E-20CF-4A89-B600-5DF2517099AA} = {74B0CDBE-083B-4B91-8C80-59544D669201}
+		{818C2A84-CCFD-4C67-AE11-14A87A0C83B2} = {0518DE2D-A61B-4F05-A588-FAF0B62A26E7}
 	EndGlobalSection
 EndGlobal

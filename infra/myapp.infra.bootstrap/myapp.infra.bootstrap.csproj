@@ -4,6 +4,7 @@
     <ProjectReference Include="..\..\domain\myapp.domain\myapp.domain.csproj" />
     <ProjectReference Include="..\..\business\myapp.business\myapp.business.csproj" />
     <ProjectReference Include="..\repository\myapp.infra.repository.memory\myapp.infra.repository.memory.csproj" />
+    <ProjectReference Include="..\repository\myapp.infra.repository.weatherforecast\myapp.infra.repository.weatherforecast.csproj" />
   </ItemGroup>
 
   <ItemGroup>
