@@ -80,7 +80,7 @@ dotnet new classlib -n myapp.domain -o domain/myapp.domain
 dotnet new classlib -n myapp.infra.bootstrap -o infra/myapp.infra.bootstrap
 dotnet new classlib -n myapp.infra.mapping -o infra/myapp.infra.mapping
 dotnet new classlib -n myapp.infra.repository.memory -o infra/repository/myapp.infra.repository.memory
-dotnet new classlib -n myapp.infra.repository.weatherforecast -o infra/repository/myapp.infra.repository.weatherforecast
+dotnet new classlib -n myapp.infra.proxy.weatherforecast -o infra/repository/myapp.infra.proxy.weatherforecast
 
 dotnet new webapi -n myapp.application.api -o application/myapp.application.api
 dotnet new xunit -n unit -o test/unit
@@ -90,7 +90,7 @@ dotnet sln add business/myapp.business/myapp.business.csproj dotnet sln add doma
 dotnet sln add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj 
 dotnet sln add infra/myapp.infra.mapping/myapp.infra.mapping.csproj 
 dotnet sln add infra/repository/myapp.infra.repository.memory/myapp.infra.repository.memory.csproj 
-dotnet sln add infra/repository/myapp.infra.repository.weatherforecast/myapp.infra.repository.weatherforecast.csproj 
+dotnet sln add infra/proxy/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weatherforecast.csproj 
 dotnet sln add application/myapp.application.api/myapp.application.api.csproj 
 dotnet sln add test/unit/unit.csproj 
 ```
@@ -98,18 +98,19 @@ dotnet sln add test/unit/unit.csproj
 ### Project references
 
 ``` bash
-dotnet add business/myapp.business/myapp.business.csproj reference domain/myapp.domain/myapp.domain.csproj
+
 
 dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj reference domain/myapp.domain/myapp.domain.csproj
 dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj reference business/myapp.business/myapp.business.csproj
 dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj reference infra/repository/myapp.infra.repository.memory/myapp.infra.repository.memory.csproj
-dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj reference infra/repository/myapp.infra.repository.weatherforecast/myapp.infra.repository.weatherforecast.csproj 
+dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj reference infra/proxy/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weatherforecast.csproj 
 
+dotnet add business/myapp.business/myapp.business.csproj reference domain/myapp.domain/myapp.domain.csproj
 dotnet add infra/repository/myapp.infra.repository.memory/myapp.infra.repository.memory.csproj reference domain/myapp.domain/myapp.domain.csproj
+dotnet add infra/proxy/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weatherforecast.csproj  reference domain/myapp.domain/myapp.domain.csproj
 
 dotnet add application/myapp.application.api/myapp.application.api.csproj reference business/myapp.business/myapp.business.csproj
 dotnet add application/myapp.application.api/myapp.application.api.csproj reference infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj
-dotnet add application/myapp.application.api/myapp.application.api.csproj reference infra/myapp.infra.mapping/myapp.infra.mapping.csproj
 ```
 
 
@@ -121,6 +122,12 @@ dotnet add application/myapp.application.api/myapp.application.api.csproj packag
 
 dotnet add infra/repository/myapp.infra.repository.memory/myapp.infra.repository.memory.csproj package AutoMapper --version 13.0.1
 dotnet add infra/repository/myapp.infra.repository.memory/myapp.infra.repository.memory.csproj package Microsoft.EntityFrameworkCore.InMemory
+
+dotnet add infra/repository/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weatherforecast.csproj package Microsoft.Extensions.DependencyInjection
+dotnet add infra/repository/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weatherforecast.csproj package Refit --version 7.2.1
+dotnet add infra/repository/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weatherforecast.csproj package Refit.HttpClientFactory --version 7.2.1
+
+dotnet add infra/repository/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weatherforecast.csproj package AutoMapper --version 13.0.1
 
 dotnet add business/myapp.business/myapp.business.csproj package Microsoft.Extensions.Logging.Abstractions --version 8.0.1
 ```

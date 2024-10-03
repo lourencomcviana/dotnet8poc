@@ -1,4 +1,4 @@
-namespace myapp.infra.repository.weatherforecast.resources;
+namespace myapp.infra.proxy.weatherforecast.resources;
 
 
 public class WeatherResponse

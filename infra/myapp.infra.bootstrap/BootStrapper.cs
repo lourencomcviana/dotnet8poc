@@ -1,8 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using myapp.business;
-using myapp.business.services;
-using myapp.domain.services;
+using myapp.infra.proxy.weatherforecast;
 using myapp.infra.repository.memory;
 
 namespace myapp.infra.bootstrap;
@@ -13,6 +11,7 @@ public static class BootStrapper
     {
         services.AddBusiness();
         services.AddPersonRepository();
+        services.AddWeatherForecastApi();
     }
 
 }

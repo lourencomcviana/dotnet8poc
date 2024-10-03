@@ -1,6 +1,6 @@
-using myapp.infra.repository.weatherforecast.resources;
+using myapp.infra.proxy.weatherforecast.resources;
 
-namespace myapp.infra.repository.weatherforecast.clients;
+namespace myapp.infra.proxy.weatherforecast.clients;
 
 using Refit;
 using System.Threading.Tasks;
