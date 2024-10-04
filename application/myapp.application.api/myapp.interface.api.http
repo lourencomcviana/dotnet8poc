@@ -1,6 +1,6 @@
-@myapp.interface.api_HostAddress = http://localhost:5206
+@myapp.application.api_HostAddress = http://localhost:5206
 
-GET {{myapp.interface.api_HostAddress}}/weatherforecast/
+GET {{myapp.application.api_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

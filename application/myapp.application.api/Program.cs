@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using myapp.domain.models;
 using myapp.domain.services;
 using myapp.infra.bootstrap;
-using myapp.@interface.api.resources;
+using myapp.@application.api.resources;
 using Person = myapp.domain.models.Person;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,7 +31,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options => // UseSwaggerUI is called only in Development.
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+        options.RoutePrefix = string.Empty;
+    });
 }
 
 app.UseHttpsRedirection();
