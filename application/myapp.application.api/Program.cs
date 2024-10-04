@@ -7,6 +7,7 @@ using myapp.domain.services;
 using myapp.infra.bootstrap;
 using myapp.@application.api.resources;
 using Person = myapp.domain.models.Person;
+using myapp.application.api.apiMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +43,7 @@ app.UseHttpsRedirection();
 
 # region API
 
+
 app.MapPost("persons", async (PersonBody person,
         [FromServices] IMapper mapper, 
         [FromServices] IPersonService personService
@@ -73,24 +75,7 @@ app.MapGet("persons/{cpf}", async (string cpf, [FromServices] IMapper mapper, [F
 
 # region DEMO
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.MapWeatherApi();
 
 #endregion
 

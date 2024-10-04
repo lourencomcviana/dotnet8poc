@@ -106,6 +106,8 @@ dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj reference in
 dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj reference infra/proxy/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weatherforecast.csproj 
 
 dotnet add business/myapp.business/myapp.business.csproj reference domain/myapp.domain/myapp.domain.csproj
+dotnet add business/myapp.business/myapp.business.csproj reference infra/proxy/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weatherforecast.csproj
+
 dotnet add infra/repository/myapp.infra.repository.memory/myapp.infra.repository.memory.csproj reference domain/myapp.domain/myapp.domain.csproj
 dotnet add infra/proxy/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weatherforecast.csproj  reference domain/myapp.domain/myapp.domain.csproj
 

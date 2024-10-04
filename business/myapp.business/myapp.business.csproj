@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\domain\myapp.domain\myapp.domain.csproj" />
+    <ProjectReference Include="..\..\infra\proxy\myapp.infra.proxy.weatherforecast\myapp.infra.proxy.weatherforecast.csproj" />
   </ItemGroup>
 
   <ItemGroup>

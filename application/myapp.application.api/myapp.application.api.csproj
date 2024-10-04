@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\business\myapp.business\myapp.business.csproj" />
-    <ProjectReference Include="..\..\infra\myapp.infra.bootstrap\myapp.infra.bootstrap.csproj" />
+	<ProjectReference Include="..\..\infra\myapp.infra.bootstrap\myapp.infra.bootstrap.csproj" />
   </ItemGroup>
 
 </Project>
