@@ -1,8 +1,8 @@
 using AutoMapper;
-using myapp.@interface.api.resources;
+using myapp.@application.api.resources;
 using Person = myapp.domain.models.Person;
 
-namespace myapp.@interface.api.mappings;
+namespace myapp.@application.api.mappings;
 
 public class PersonMapper
 {

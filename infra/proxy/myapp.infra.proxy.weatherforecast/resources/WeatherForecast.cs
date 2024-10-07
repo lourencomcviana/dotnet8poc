@@ -11,7 +11,7 @@ public class WeatherResponse
     public string TimezoneAbbreviation { get; set; }
     public double Elevation { get; set; }
     public CurrentUnits CurrentUnits { get; set; }
-    public CurrentWeather Current { get; set; }
+    public CurrentWeather? Current { get; set; }
     public HourlyUnits HourlyUnits { get; set; }
     public HourlyWeather Hourly { get; set; }
 }
