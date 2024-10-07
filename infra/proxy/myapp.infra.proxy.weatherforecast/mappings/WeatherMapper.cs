@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using myapp.domain.models;
 using myapp.infra.proxy.weatherforecast.resources;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace myapp.infra.proxy.weatherforecast.mappings
 {

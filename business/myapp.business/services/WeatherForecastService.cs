@@ -1,17 +1,6 @@
-﻿using AutoMapper;
-using Microsoft.Extensions.Logging;
-using myapp.domain.models;
-using myapp.domain.repositories;
+﻿using myapp.domain.models;
 using myapp.domain.services;
 using myapp.infra.proxy.weatherforecast.adapters;
-using myapp.infra.proxy.weatherforecast.clients;
-using myapp.infra.proxy.weatherforecast.resources;
-using Refit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace myapp.business.services
 {
