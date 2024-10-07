@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using myapp.application.api.resources;
 using myapp.domain.models;
-using myapp.infra.proxy.weatherforecast.resources;
 
 namespace myapp.application.api.mappings
 {

@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using myapp.domain.proxys;
 using myapp.infra.proxy.weatherforecast.adapters;
 using myapp.infra.proxy.weatherforecast.clients;
 using myapp.infra.proxy.weatherforecast.mappings;
@@ -13,7 +14,7 @@ public static class InjectionConfig
         services.AddRefitClient<IWeatherApi>()
             .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://api.open-meteo.com"));
 
-        services.AddTransient<IWeatherApiAdapter, WeatherApiAdapter>();
+        services.AddTransient<IWeatherProxy, WeatherProxy>();
 
         services.AddAutoMapper(typeof(WeatherMapper.WeatherProfile));
     }

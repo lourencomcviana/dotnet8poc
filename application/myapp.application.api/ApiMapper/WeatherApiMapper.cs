@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using myapp.application.api.resources;
-using myapp.domain.models;
-using myapp.domain.proxys;
 using myapp.domain.services;
-using System.Runtime.CompilerServices;
 
 namespace myapp.application.api.apiMapper
 {

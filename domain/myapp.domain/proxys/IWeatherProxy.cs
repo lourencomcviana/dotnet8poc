@@ -1,8 +1,8 @@
 ﻿using myapp.domain.models;
 
-namespace myapp.infra.proxy.weatherforecast.adapters
+namespace myapp.domain.proxys
 {
-    public interface IWeatherApiAdapter
+    public interface IWeatherProxy
     {
         public Task<WeatherForecast?> GetCurrentWeatherAsync(double latitude, double longitude, string current, string hourly);
     }
