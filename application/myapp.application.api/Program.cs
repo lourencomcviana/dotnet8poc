@@ -2,23 +2,28 @@
 using System.Reflection;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using myapp.application.api.Controllers;
 using myapp.domain.models;
 using myapp.domain.services;
 using myapp.infra.bootstrap;
 using myapp.@application.api.resources;
 using Person = myapp.domain.models.Person;
-using myapp.application.api.apiMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
-#region Custom Injections
+// // Configuration Sources
+// builder.Configuration
+//     .SetBasePath(Directory.GetCurrentDirectory())
+//     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+//     .AddEnvironmentVariables()
+//     .AddCommandLine(args);
 
+#region Custom Injections
 // BootStrap service injection
-builder.Services.ConfigureServices();
+builder.Services.ConfigureServices(builder.Configuration);
 
 // Add Mapper
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
 #endregion
 
 // Add services to the container.

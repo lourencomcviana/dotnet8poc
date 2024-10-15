@@ -81,11 +81,14 @@ dotnet new classlib -n myapp.infra.bootstrap -o infra/myapp.infra.bootstrap
 dotnet new classlib -n myapp.infra.mapping -o infra/myapp.infra.mapping
 dotnet new classlib -n myapp.infra.repository.memory -o infra/repository/myapp.infra.repository.memory
 dotnet new classlib -n myapp.infra.proxy.weatherforecast -o infra/repository/myapp.infra.proxy.weatherforecast
+dotnet new classlib -n myapp.util -o domain/myapp.util
+
 
 dotnet new webapi -n myapp.application.api -o application/myapp.application.api
 dotnet new xunit -n unit -o test/unit
 
-
+dotnet sln add domain/myapp.util/myapp.util.csproj 
+dotnet sln add domain/myapp.domain/myapp.domain.csproj 
 dotnet sln add business/myapp.business/myapp.business.csproj dotnet sln add domain/myapp.domain/myapp.domain.csproj
 dotnet sln add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj 
 dotnet sln add infra/myapp.infra.mapping/myapp.infra.mapping.csproj 
@@ -93,12 +96,14 @@ dotnet sln add infra/repository/myapp.infra.repository.memory/myapp.infra.reposi
 dotnet sln add infra/proxy/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weatherforecast.csproj 
 dotnet sln add application/myapp.application.api/myapp.application.api.csproj 
 dotnet sln add test/unit/unit.csproj 
+
 ```
 
 ### Project references
 
 ``` bash
 
+dotnet add domain/myapp.domain/myapp.domain.csproj reference domain/myapp.util/myapp.util.csproj 
 
 dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj reference domain/myapp.domain/myapp.domain.csproj
 dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj reference business/myapp.business/myapp.business.csproj
@@ -113,12 +118,17 @@ dotnet add infra/proxy/myapp.infra.proxy.weatherforecast/myapp.infra.proxy.weath
 
 dotnet add application/myapp.application.api/myapp.application.api.csproj reference business/myapp.business/myapp.business.csproj
 dotnet add application/myapp.application.api/myapp.application.api.csproj reference infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj
+
 ```
 
 
 ### Dependency
 ``` bash
+dotnet add domain/myapp.util/myapp.util.csproj  package Microsoft.Extensions.Configuration
+dotnet add domain/myapp.util/myapp.util.csproj  package Microsoft.Extensions.Configuration.Binder
+
 dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj package Microsoft.Extensions.DependencyInjection
+
 
 dotnet add application/myapp.application.api/myapp.application.api.csproj package AutoMapper --version 13.0.1
 
