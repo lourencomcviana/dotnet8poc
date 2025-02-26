@@ -127,6 +127,10 @@ dotnet add application/myapp.application.api/myapp.application.api.csproj refere
 dotnet add domain/myapp.util/myapp.util.csproj  package Microsoft.Extensions.Configuration
 dotnet add domain/myapp.util/myapp.util.csproj  package Microsoft.Extensions.Configuration.Binder
 
+
+dotnet add business/myapp.business/myapp.business.cs package  MediatR --version 12.4.1
+dotnet add business/myapp.business/myapp.business.csproj package FluentValidation --version 11.11.0
+
 dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj package Microsoft.Extensions.DependencyInjection
 
 

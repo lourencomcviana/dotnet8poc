@@ -1,12 +1,17 @@
 
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using AutoMapper;
+using MediatR;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using myapp.application.api.Controllers;
 using myapp.domain.models;
 using myapp.domain.services;
 using myapp.infra.bootstrap;
 using myapp.@application.api.resources;
+using myapp.business.Commands;
+using myapp.util.exceptions;
 using Person = myapp.domain.models.Person;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -51,10 +56,20 @@ app.UseHttpsRedirection();
 
 app.MapPost("persons", async (PersonBody person,
         [FromServices] IMapper mapper, 
-        [FromServices] IPersonService personService
-        ) => {
-    await personService.Save(mapper.Map<Person>(person));
-    return;
+        [FromServices] IPersonService personService,
+        [FromServices] IMediator mediator
+        ) =>
+        {
+            try
+            {
+                var res = await mediator.Send(mapper.Map<CreateUserCommand>(person));
+                return Results.Ok(res);
+            }
+            catch (HttpException e)
+            {
+                return Results.Problem(e.Message, statusCode: e.HttpCode);
+            }
+
 })
 .WithName("PostPerson")
 .WithTags("Persons")
