@@ -135,6 +135,7 @@ dotnet add infra/myapp.infra.bootstrap/myapp.infra.bootstrap.csproj package Micr
 
 
 dotnet add application/myapp.application.api/myapp.application.api.csproj package AutoMapper --version 13.0.1
+dotnet add application/myapp.application.api/myapp.application.api.csproj  package CsvHelper --version 33.0.1
 
 dotnet add infra/repository/myapp.infra.repository.memory/myapp.infra.repository.memory.csproj package AutoMapper --version 13.0.1
 dotnet add infra/repository/myapp.infra.repository.memory/myapp.infra.repository.memory.csproj package Microsoft.EntityFrameworkCore.InMemory

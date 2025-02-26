@@ -1,7 +1,9 @@
 
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Reflection;
 using AutoMapper;
+using CsvHelper;
 using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -53,27 +55,93 @@ app.UseHttpsRedirection();
 
 # region API
 
-
-app.MapPost("persons", async (PersonBody person,
-        [FromServices] IMapper mapper, 
-        [FromServices] IPersonService personService,
-        [FromServices] IMediator mediator
-        ) =>
+app.MapPost("persons", async (HttpRequest request,
+    [FromServices] IMapper mapper,
+    [FromServices] IPersonService personService,
+    [FromServices] IMediator mediator) =>
+{
+    try
+    {
+        if (request.ContentType == "application/json")
         {
-            try
+            // Handle JSON input
+            var person = await request.ReadFromJsonAsync<PersonBody>();
+            var res = await mediator.Send(mapper.Map<CreateUserCommand>(person));
+            return Results.Ok(res);
+        }
+        
+        if (request.ContentType == "text/csv")
+        {
+            // Handle CSV input
+            IEnumerable<PersonBody> records;
+            using var reader = new StreamReader(request.Body);
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+
+            var content = await reader.ReadToEndAsync();
+            
+            using var stringReader = new StringReader(content);
+            
+            var newReader = new CsvReader(stringReader, csv.Context.Configuration);
+            records = newReader.GetRecords<PersonBody>().ToList();
+                
+                
+            var tasks = records.Select(async person =>
             {
                 var res = await mediator.Send(mapper.Map<CreateUserCommand>(person));
-                return Results.Ok(res);
-            }
-            catch (HttpException e)
-            {
-                return Results.Problem(e.Message, statusCode: e.HttpCode);
-            }
+                return res;
+            });
 
+            var results = await Task.WhenAll(tasks);
+            return Results.Ok((object?)results);
+        }
+        
+        return Results.Problem("Unsupported Content-Type", statusCode: 415);
+        
+    }
+    catch (HttpException e)
+    {
+        return Results.Problem(e.Message, statusCode: e.HttpCode);
+    }
 })
 .WithName("PostPerson")
 .WithTags("Persons")
-.WithOpenApi();
+.WithOpenApi(op =>
+{
+    op.OperationId = "PostPerson";
+    op.RequestBody = new Microsoft.OpenApi.Models.OpenApiRequestBody
+    {
+        Content =
+        {
+            ["application/json"] = new Microsoft.OpenApi.Models.OpenApiMediaType
+            {
+                Schema = new Microsoft.OpenApi.Models.OpenApiSchema
+                {
+                    Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                    {
+                        Type = Microsoft.OpenApi.Models.ReferenceType.Schema,
+                        Id = "PersonBody"
+                    }
+                },
+                Example = new Microsoft.OpenApi.Any.OpenApiObject
+                {
+                    ["name"] = new Microsoft.OpenApi.Any.OpenApiString("John Doe"),
+                    ["age"] = new Microsoft.OpenApi.Any.OpenApiInteger(30)
+                }
+            },
+            ["text/csv"] = new Microsoft.OpenApi.Models.OpenApiMediaType
+            {
+                Schema = new Microsoft.OpenApi.Models.OpenApiSchema
+                {
+                    Type = "string",
+                    Format = "string"
+                },
+                Example = new Microsoft.OpenApi.Any.OpenApiString("name,age\nJohn Doe,30")
+            }
+        }
+    };
+    return op;
+});
+
 
 
 app.MapGet("persons/{cpf}", async (string cpf, [FromServices] IMapper mapper, [FromServices] IPersonService personService) =>

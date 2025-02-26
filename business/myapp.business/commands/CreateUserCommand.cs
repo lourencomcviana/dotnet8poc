@@ -11,6 +11,8 @@ public class CreateUserCommand: IRequest<Person>
     public string? Surname { get; init; }
     public string? Cpf { get; init; }
     public int? Age { get; init; }
+    
+    public string Validation { get; set; }
 }
 
 
